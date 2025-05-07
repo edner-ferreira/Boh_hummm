@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.br.boh_hummm.controller.LoginActivity
-import com.br.boh_hummm.controller.RegisterActivity
+import com.br.boh_hummm.activity.LoginActivity
+import com.br.boh_hummm.activity.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

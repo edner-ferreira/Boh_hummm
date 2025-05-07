@@ -1,4 +1,4 @@
-package com.br.boh_hummm.controller
+package com.br.boh_hummm.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.br.boh_hummm.R
+import com.br.boh_hummm.controller.UserController
 import com.br.boh_hummm.model.User
 
 class RegisterActivity : AppCompatActivity() {

@@ -21,19 +21,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".controller.RegisterActivity"
+            android:name=".activity.RegisterActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".controller.ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".controller.SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
