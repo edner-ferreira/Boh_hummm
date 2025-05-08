@@ -1,12 +1,12 @@
 package com.br.boh_hummm.database
 
 import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
 import com.br.boh_hummm.model.Motorcycle
 
-class MotorcycleDao(private val db: SQLiteDatabase) {
+class MotorcycleDao(private val dbHelper: DatabaseHelper) {
 
     fun insert(moto: Motorcycle): Boolean {
+        val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("mot_brand", moto.mot_brand)
             put("mot_type", moto.mot_type)
@@ -17,6 +17,7 @@ class MotorcycleDao(private val db: SQLiteDatabase) {
     }
 
     fun getByUser(userId: Int): List<Motorcycle> {
+        val db = dbHelper.writableDatabase
         val list = mutableListOf<Motorcycle>()
         val cursor = db.rawQuery("SELECT * FROM motorcycle WHERE mot_use_id = ?", arrayOf(userId.toString()))
         while (cursor.moveToNext()) {

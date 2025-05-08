@@ -7,12 +7,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.br.boh_hummm.R
+import com.br.boh_hummm.controller.MotorcycleController
 import com.br.boh_hummm.controller.UserController
 import com.br.boh_hummm.model.User
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var userController: UserController
+    private lateinit var motorocycleController: MotorcycleController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,9 @@ class RegisterActivity : AppCompatActivity() {
         val etName = findViewById<EditText>(R.id.etName)
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
+        val etBrand = findViewById<EditText>(R.id.etBrand)
+        val etType = findViewById<EditText>(R.id.etType)
+        val etCylinder = findViewById<EditText>(R.id.etCylinder)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
