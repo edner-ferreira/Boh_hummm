@@ -23,11 +23,11 @@ class MotorcycleDao(private val dbHelper: DatabaseHelper) {
         while (cursor.moveToNext()) {
             list.add(
                 Motorcycle(
-                    mot_id = cursor.getInt(0),
+                    mot_id = cursor.getLong(0),
                     mot_brand = cursor.getString(1),
                     mot_type = cursor.getString(2),
                     mot_cylinder_capacity = cursor.getDouble(3),
-                    mot_use_id = cursor.getInt(4)
+                    mot_use_id = cursor.getLong(4)
                 )
             )
         }

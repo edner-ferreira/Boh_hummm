@@ -5,7 +5,7 @@ import com.br.boh_hummm.model.User
 
 class UserDao(private val dbHelper: DatabaseHelper) {
 
-    fun addUser(user: User): Boolean {
+    fun addUser(user: User): Long {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("name", user.name)
@@ -15,7 +15,7 @@ class UserDao(private val dbHelper: DatabaseHelper) {
 
         val result = db.insert("users", null, values)
         db.close()
-        return result != -1L
+        return result
     }
 
     fun getUser(email: String, password: String): User? {
@@ -25,7 +25,7 @@ class UserDao(private val dbHelper: DatabaseHelper) {
 
         return if (cursor.moveToFirst()) {
             val user = User(
-                id = cursor.getInt(0),
+                id = cursor.getLong(0),
                 name = cursor.getString(1),
                 email = cursor.getString(2),
                 password = cursor.getString(3)
@@ -45,7 +45,7 @@ class UserDao(private val dbHelper: DatabaseHelper) {
 
         return if (cursor.moveToFirst()) {
             val user = User(
-                id = cursor.getInt(0),
+                id = cursor.getLong(0),
                 name = cursor.getString(1),
                 email = cursor.getString(2),
                 password = cursor.getString(3)
@@ -58,14 +58,14 @@ class UserDao(private val dbHelper: DatabaseHelper) {
         }
     }
 
-    fun getUserByID(id: Int): User? {
+    fun getUserByID(id: Long): User? {
         val db = dbHelper.readableDatabase
         val query = "SELECT * FROM users WHERE id = ?"
         val cursor = db.rawQuery(query, arrayOf(id.toString()))
 
         return if (cursor.moveToFirst()) {
             val user = User(
-                id = cursor.getInt(0),
+                id = cursor.getLong(0),
                 name = cursor.getString(1),
                 email = cursor.getString(2),
                 password = cursor.getString(3)

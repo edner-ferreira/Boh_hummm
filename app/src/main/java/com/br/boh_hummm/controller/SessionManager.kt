@@ -7,15 +7,15 @@ class SessionManager(context: Context) {
 
     private val sharedPref: SharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE)
 
-    fun saveUserSession(userId: Int) {
+    fun saveUserSession(userId: Long) {
         val editor = sharedPref.edit()
-        editor.putInt("USER_ID", userId)
+        editor.putLong("USER_ID", userId)
         editor.putBoolean("IS_LOGGED_IN", true)
         editor.apply()
     }
 
-    fun getUserId(): Int {
-        return sharedPref.getInt("USER_ID", -1)
+    fun getUserId(): Long {
+        return sharedPref.getLong("USER_ID", -1)
     }
 
     fun isLoggedIn(): Boolean {

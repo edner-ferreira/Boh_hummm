@@ -21,13 +21,20 @@ class ProfileActivity : AppCompatActivity() {
         userController = UserController(this)
         sessionManager = SessionManager(this)
 
-        val userId = sessionManager.getUserId()
+        val userId = sessionManager.getUserId().toLong()
         if (sessionManager.isLoggedIn()) {
             val user = userController.getUserID(userId)
             findViewById<TextView>(R.id.tvUserName).text = "Nome: ${user?.name}"
             findViewById<TextView>(R.id.tvUserEmail).text = "Email: ${user?.email}"
 
+            val btnInserirEntrega = findViewById<Button>(R.id.btnInserirEntrega)
+            val btnRelatorioMensal = findViewById<Button>(R.id.btnRelatorioMensal)
             val btnLogout = findViewById<Button>(R.id.btnLogout)
+
+            btnInserirEntrega.setOnClickListener {
+
+            }
+
             btnLogout.setOnClickListener {
                 sessionManager.logout() // 🔹 Remove os dados da sessão
                 startActivity(Intent(this, LoginActivity::class.java))

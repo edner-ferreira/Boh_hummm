@@ -10,9 +10,9 @@ class UserController(context: Context) {
     private val userDao = UserDao(DatabaseHelper(context))
     private lateinit var userdb: User
 
-    fun registerUser(user: User): Boolean {
+    fun registerUser(user: User): Long {
         if (userDao.getUserByEmail(user.email) != null) {
-            return false // Email já cadastrado
+            return 0 // Email já cadastrado
         }
         return userDao.addUser(user)
     }
@@ -21,7 +21,7 @@ class UserController(context: Context) {
         return userDao.getUser(email, password)
     }
 
-    fun getUserID(id: Int): User? {
+    fun getUserID(id: Long): User? {
         return userDao.getUserByID(id)
     }
 }
