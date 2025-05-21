@@ -5,5 +5,5 @@ data class Motorcycle(
     val mot_brand: String?,
     val mot_type: String?,
     val mot_cylinder_capacity: Double?,
-    val mot_use_id: Long // chave estrangeira para User
+    val mot_user_id: Long // chave estrangeira para User
 )

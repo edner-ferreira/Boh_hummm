@@ -1,8 +1,8 @@
 package com.br.boh_hummm.model
 
 data class User(
-    val id: Long = 0,
-    val name: String,
-    val email: String,
-    val password: String
+    val user_id: Long = 0,
+    val user_name: String,
+    val user_email: String,
+    val user_password: String
 )

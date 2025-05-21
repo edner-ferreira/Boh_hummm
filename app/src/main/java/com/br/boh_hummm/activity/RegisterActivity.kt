@@ -47,9 +47,9 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             val user = User(
-                name = name,
-                email = email,
-                password = password
+                user_name = name,
+                user_email = email,
+                user_password = password
             )
             val userId = userController.registerUser(user)
 
@@ -58,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                     mot_brand = brand,
                     mot_type = type,
                     mot_cylinder_capacity = cylinder,
-                    mot_use_id = userId
+                    mot_user_id = userId
                 )
 
                 val motoInserido = motorcycleController.registerUserWithMotorcycle(motorcycle)

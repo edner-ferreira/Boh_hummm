@@ -8,23 +8,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "UserDatabase.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 8
 
         private const val TABLE_USERS = "users"
         private const val TABLE_MOTORCYCLE = "motorcycle"
         private const val TABLE_SLOP = "slope"
         private const val TABLE_DELIVERY = "delivery"
 
-        private const val COLUMN_USER_ID = "id"
-        private const val COLUMN_USER_NAME = "name"
-        private const val COLUMN_USER_EMAIL = "email"
-        private const val COLUMN_USER_PASSWORD = "password"
+        private const val COLUMN_USER_ID = "user_id"
+        private const val COLUMN_USER_NAME = "user_name"
+        private const val COLUMN_USER_EMAIL = "user_email"
+        private const val COLUMN_USER_PASSWORD = "user_password"
 
         private const val COLUMN_MOT_ID = "mot_id"
         private const val COLUMN_MOT_BRAND = "mot_brand"
         private const val COLUMN_MOT_TYPE = "mot_type"
         private const val COLUMN_MOT_CYLINDER_CAPACITY = "mot_cylinder_capacity"
-        private const val COLUMN_MOT_USE_ID = "mot_use_id"
+        private const val COLUMN_MOT_USER_ID = "mot_user_id"
 
         private const val COLUMN_SLO_ID = "slo_id"
         private const val COLUMN_SLO_DATE = "slo_date"
@@ -34,6 +34,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val COLUMN_DEL_ID = "del_id"
         private const val COLUMN_DEL_ORDER = "del_order"
         private const val COLUMN_DEL_FEE = "del_fee"
+        private const val COLUMN_DEL_DATE = "del_date"
         private const val COLUMN_DEL_SLO_ID = "del_slo_id"
         private const val COLUMN_DEL_USER_ID = "del_user_id"
         private const val COLUMN_DEL_MOT_ID = "del_mot_id"
@@ -56,8 +57,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_MOT_BRAND TEXT,
                 $COLUMN_MOT_TYPE TEXT UNIQUE,
                 $COLUMN_MOT_CYLINDER_CAPACITY REAL,
-                $COLUMN_MOT_USE_ID INTEGER NOT NULL,
-                FOREIGN KEY ($COLUMN_MOT_USE_ID) REFERENCES users ($COLUMN_USER_ID) ON DELETE CASCADE
+                $COLUMN_MOT_USER_ID INTEGER NOT NULL,
+                FOREIGN KEY ($COLUMN_MOT_USER_ID) REFERENCES users ($COLUMN_USER_ID) ON DELETE CASCADE
             );
             """.trimIndent()
 
@@ -76,6 +77,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_DEL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_DEL_ORDER INTEGER UNIQUE,
                 $COLUMN_DEL_FEE REAL,
+                $COLUMN_DEL_DATE DATE NOT NULL,
                 $COLUMN_DEL_SLO_ID INTEGER NOT NULL,
                 $COLUMN_DEL_USER_ID INTEGER NOT NULL,
                 $COLUMN_DEL_MOT_ID INTEGER NOT NULL,

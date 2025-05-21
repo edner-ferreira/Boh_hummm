@@ -16,4 +16,9 @@ class MotorcycleController(context: Context) {
         return true
     }
 
+    fun getMotosDoUsuario(userId: Long): List<Motorcycle> {
+        return motorcycleDao.getAllMotorcyclesByUser(userId)
+    }
+
+
 }

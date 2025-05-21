@@ -33,6 +33,14 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".activity.InserirSlopeActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.InserirDeliveryActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>

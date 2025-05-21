@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.br.boh_hummm.MainActivity
 import com.br.boh_hummm.R
 import com.br.boh_hummm.controller.SessionManager
 import com.br.boh_hummm.controller.UserController
@@ -25,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
 
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString()
@@ -32,14 +34,20 @@ class LoginActivity : AppCompatActivity() {
 
             val user = userController.login(email, password)
             if (user != null) {
-                sessionManager.saveUserSession(user.id)  // 🔹 Salva o ID do usuário logado
+                sessionManager.saveUserSession(user.user_id)  // 🔹 Salva o ID do usuário logado
                 val intent = Intent(this, ProfileActivity::class.java)
-                intent.putExtra("USER_ID", user.id)
+                intent.putExtra("USER_ID", user.user_id)
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email ou senha incorretos, \n" +
+                        "ou úsuario não cadastrado", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btnVoltar.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

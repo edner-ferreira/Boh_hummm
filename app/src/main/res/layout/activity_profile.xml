@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="183dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="105dp"
         android:layout_marginEnd="187dp"
         android:layout_marginBottom="16dp"
         android:text="Nome:"
@@ -27,12 +27,27 @@
         android:layout_marginStart="186dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="187dp"
-        android:layout_marginBottom="185dp"
+        android:layout_marginBottom="145dp"
         android:text="Email:"
-        app:layout_constraintBottom_toTopOf="@+id/btnInserirEntrega"
+        app:layout_constraintBottom_toTopOf="@+id/btnInserirEncosta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUserName"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnInserirEncosta"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="8dp"
+        android:text="Inserir Encosta"
+        app:layout_constraintBottom_toTopOf="@+id/tvUserEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnInserirEntrega"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -40,7 +55,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="8dp"
         android:text="Inserir Entrega"
@@ -48,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUserEmail"
+        app:layout_constraintTop_toBottomOf="@id/btnInserirEncosta"
         tools:ignore="MissingConstraints" />
 
     <Button

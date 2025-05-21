@@ -11,7 +11,7 @@ class UserController(context: Context) {
     private lateinit var userdb: User
 
     fun registerUser(user: User): Long {
-        if (userDao.getUserByEmail(user.email) != null) {
+        if (userDao.getUserByEmail(user.user_email) != null) {
             return 0 // Email já cadastrado
         }
         return userDao.addUser(user)
