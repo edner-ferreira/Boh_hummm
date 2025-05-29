@@ -16,4 +16,9 @@ class DeliveryController(context: Context) {
         return true
     }
 
+    fun getAllDeliveriesByUserDate(userId: Long, dataFormatada: String): List<Delivery> {
+        return deliveryDao.getDeliveriesByDate(userId, dataFormatada)
+    }
+
+
 }

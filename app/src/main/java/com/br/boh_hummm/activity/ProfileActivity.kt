@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.br.boh_hummm.MainActivity
 import com.br.boh_hummm.R
 import com.br.boh_hummm.controller.SessionManager
@@ -43,7 +44,7 @@ class ProfileActivity : AppCompatActivity() {
 
             if (slopeDiaria == true) {
 //                Toast.makeText(this, "Encosta já cadastrada neste dia.", Toast.LENGTH_LONG).show()
-                btnInserirEncosta.isEnabled = false // opcional: desativa o botão
+                btnInserirEncosta.isVisible = false // opcional: desativa o botão
             }
             btnInserirEncosta.setOnClickListener {
                 val intent = Intent(this, InserirSlopeActivity::class.java)

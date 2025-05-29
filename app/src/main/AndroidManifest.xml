@@ -41,6 +41,14 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".activity.ListarDeliveryActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.ListarEntregasDiaActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>

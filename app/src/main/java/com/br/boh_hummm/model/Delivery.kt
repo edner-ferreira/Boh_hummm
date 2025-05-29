@@ -5,6 +5,7 @@ data class Delivery(
     val del_order: Int,
     val del_fee: Double?,
     val del_date: String,
+    val del_time: String,
     val del_slo_id: Long, // chave estrangeira para Slope
     val del_user_id: Long,  // chave estrangeira para User
     val del_mot_id: Long // chave estrangeira para Motocycle

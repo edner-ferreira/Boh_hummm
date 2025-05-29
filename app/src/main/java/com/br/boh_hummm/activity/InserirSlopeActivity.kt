@@ -12,7 +12,8 @@ import com.br.boh_hummm.R
 import com.br.boh_hummm.controller.SessionManager
 import com.br.boh_hummm.controller.SlopeController
 import com.br.boh_hummm.model.Slope
-import java.time.LocalDateTime
+import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 class InserirSlopeActivity : AppCompatActivity() {
@@ -40,11 +41,16 @@ class InserirSlopeActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             val userId = sessionManager.getUserId().toLong()
-            val dataHoraAtual = LocalDateTime.now()
-            val formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm:ss")
-            val dataHoraFormatada = dataHoraAtual.format(formatador)
+            val dataAtual = LocalDate.now()
+            val horaAtual = LocalTime.now()
+            val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val formatadorTime = DateTimeFormatter.ofPattern("HH:mm:ss")
+            val dataFormatada = dataAtual.format(formatadorDate)
+            val horaFormatada = horaAtual.format(formatadorTime)
+
             val slope = Slope(
-                slo_date = dataHoraFormatada,
+                slo_date = dataFormatada,
+                slo_time = horaFormatada,
                 slo_value = encosta.toString().toDoubleOrNull(),
                 slo_user_id = userId
             )

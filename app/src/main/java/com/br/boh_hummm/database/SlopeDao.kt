@@ -9,6 +9,7 @@ class SlopeDao(private val dbHelper: DatabaseHelper) {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("slo_date", slope.slo_date)
+            put("slo_time", slope.slo_time)
             put("slo_value", slope.slo_value)
             put("slo_user_id", slope.slo_user_id)
         }
@@ -24,8 +25,9 @@ class SlopeDao(private val dbHelper: DatabaseHelper) {
                 Slope(
                     slo_id = cursor.getLong(0),
                     slo_date = cursor.getString(1),
-                    slo_value = cursor.getDouble(2),
-                    slo_user_id = cursor.getLong(3)
+                    slo_time = cursor.getString(2),
+                    slo_value = cursor.getDouble(3),
+                    slo_user_id = cursor.getLong(4)
                 )
             )
         }
@@ -34,7 +36,7 @@ class SlopeDao(private val dbHelper: DatabaseHelper) {
     }
 
     fun getSlopeLastDate(id: Long): Slope? {
-        val db = dbHelper.writableDatabase
+        val db = dbHelper.readableDatabase
         val query = "SELECT * FROM slope WHERE slo_user_id = ? ORDER BY slo_date DESC LIMIT 1"
         val cursor = db.rawQuery(query, arrayOf(id.toString()))
 
@@ -42,13 +44,33 @@ class SlopeDao(private val dbHelper: DatabaseHelper) {
             Slope(
                 slo_id = cursor.getLong(0),
                 slo_date = cursor.getString(1),
-                slo_value = cursor.getDouble(2),
-                slo_user_id = cursor.getLong(3)
+                slo_time = cursor.getString(2),
+                slo_value = cursor.getDouble(3),
+                slo_user_id = cursor.getLong(4)
             )
         } else {
             null
         }
         cursor.close()
         return slope
+    }
+
+    fun getSlopeByUsertDate(id: Long, dateSlope: String): Slope? {
+        val db = dbHelper.readableDatabase
+        val query = """SELECT * FROM slope WHERE slo_user_id = ? AND slo_date = ?""".trimIndent()
+
+        return db.rawQuery(query, arrayOf(id.toString(), dateSlope)).use { cursor ->
+            if (cursor.moveToFirst()) {
+                Slope(
+                    slo_id = cursor.getLong(cursor.getColumnIndexOrThrow("slo_id")),
+                    slo_date = cursor.getString(cursor.getColumnIndexOrThrow("slo_date")),
+                    slo_time = cursor.getString(cursor.getColumnIndexOrThrow("slo_time")),
+                    slo_value = cursor.getDouble(cursor.getColumnIndexOrThrow("slo_value")),
+                    slo_user_id = cursor.getLong(cursor.getColumnIndexOrThrow("slo_user_id"))
+                )
+            } else {
+                null
+            }
+        }
     }
 }

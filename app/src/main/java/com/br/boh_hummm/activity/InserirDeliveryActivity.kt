@@ -16,7 +16,8 @@ import com.br.boh_hummm.controller.MotorcycleController
 import com.br.boh_hummm.controller.SessionManager
 import com.br.boh_hummm.controller.SlopeController
 import com.br.boh_hummm.model.Delivery
-import java.time.LocalDateTime
+import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 class InserirDeliveryActivity : AppCompatActivity() {
@@ -62,9 +63,12 @@ class InserirDeliveryActivity : AppCompatActivity() {
         btnInserirEntrega.setOnClickListener {
             val comanda = etComanda.text.toString().trim()
             val taxa = etTaxa.text.toString().trim()
-            val dataHoraAtual = LocalDateTime.now()
-            val formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm:ss")
-            val dataHoraFormatada = dataHoraAtual.format(formatador)
+            val dataAtual = LocalDate.now()
+            val horaAtual = LocalTime.now()
+            val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val formatadorTime = DateTimeFormatter.ofPattern("HH:mm:ss")
+            val dataFormatada = dataAtual.format(formatadorDate)
+            val horaFormatada = horaAtual.format(formatadorTime)
 
             if (comanda.isEmpty() || taxa.isEmpty()) {
                 Toast.makeText(this, "Preencha o campo corretamente", Toast.LENGTH_SHORT).show()
@@ -80,7 +84,8 @@ class InserirDeliveryActivity : AppCompatActivity() {
             val delivery = Delivery(
                 del_order = comanda.toString().toInt(),
                 del_fee = taxa.toString().toDoubleOrNull(),
-                del_date = dataHoraFormatada,
+                del_date = dataFormatada,
+                del_time = horaFormatada,
                 del_slo_id = slopeId,
                 del_user_id = userId,
                 del_mot_id = userId
@@ -94,6 +99,11 @@ class InserirDeliveryActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Erro: Não foi possivel inserir a entrega", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btnViewEntregasFinal.setOnClickListener {
+            startActivity(Intent(this, ListarEntregasDiaActivity::class.java))
+            finish()
         }
 
         btnVoltar.setOnClickListener {

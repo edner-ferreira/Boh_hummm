@@ -8,7 +8,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "UserDatabase.db"
-        private const val DATABASE_VERSION = 8
+        private const val DATABASE_VERSION = 9
 
         private const val TABLE_USERS = "users"
         private const val TABLE_MOTORCYCLE = "motorcycle"
@@ -28,6 +28,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         private const val COLUMN_SLO_ID = "slo_id"
         private const val COLUMN_SLO_DATE = "slo_date"
+        private const val COLUMN_SLO_TIME = "slo_time"
         private const val COLUMN_SLO_VALUE = "slo_value"
         private const val COLUMN_SLO_USER_ID = "slo_user_id"
 
@@ -35,6 +36,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val COLUMN_DEL_ORDER = "del_order"
         private const val COLUMN_DEL_FEE = "del_fee"
         private const val COLUMN_DEL_DATE = "del_date"
+        private const val COLUMN_DEL_TIME = "del_time"
         private const val COLUMN_DEL_SLO_ID = "del_slo_id"
         private const val COLUMN_DEL_USER_ID = "del_user_id"
         private const val COLUMN_DEL_MOT_ID = "del_mot_id"
@@ -66,6 +68,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             CREATE TABLE $TABLE_SLOP (
                 $COLUMN_SLO_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_SLO_DATE DATE NOT NULL,
+                $COLUMN_SLO_TIME DATE NOT NULL,
                 $COLUMN_SLO_VALUE REAL,
                 $COLUMN_SLO_USER_ID INTEGER NOT NULL,
                 FOREIGN KEY ($COLUMN_SLO_USER_ID) REFERENCES users ($COLUMN_USER_ID) ON DELETE CASCADE
@@ -78,6 +81,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_DEL_ORDER INTEGER UNIQUE,
                 $COLUMN_DEL_FEE REAL,
                 $COLUMN_DEL_DATE DATE NOT NULL,
+                $COLUMN_DEL_TIME DATE NOT NULL,
                 $COLUMN_DEL_SLO_ID INTEGER NOT NULL,
                 $COLUMN_DEL_USER_ID INTEGER NOT NULL,
                 $COLUMN_DEL_MOT_ID INTEGER NOT NULL,

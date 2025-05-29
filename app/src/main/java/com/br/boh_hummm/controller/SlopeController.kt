@@ -37,13 +37,21 @@ class SlopeController(context: Context) {
         val ultimaDataHoraInserida = slope.slo_date
         val ultimaData = ultimaDataHoraInserida.split("-")
         val dataHoje = LocalDate.now()
-        val formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        val dataAtual = dataHoje.format(formatador).toString()
+        val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val dataFormatada = dataHoje.format(formatadorDate).toString()
 
-        if (ultimaData[0].equals(dataAtual)) {
+        if (ultimaData[0].equals(dataFormatada)) {
             return true
         }
         return false
+    }
+
+    fun buscarValueSlopeByUserDate(userId: Long, dateSlope: String): Slope? {
+        val slope = slopeDao.getSlopeByUsertDate(userId, dateSlope)
+        if (slope == null) {
+            return null
+        }
+        return slope
     }
 
 }
