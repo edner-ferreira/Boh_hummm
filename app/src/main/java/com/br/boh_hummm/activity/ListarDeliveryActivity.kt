@@ -10,10 +10,10 @@ class ListarDeliveryActivity : AppCompatActivity() {
     private lateinit var slopeController: SlopeController
     private lateinit var sessionManager: SessionManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_listar_delivery)
-
-
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_listar_delivery)
+//
+//
+//    }
 }
