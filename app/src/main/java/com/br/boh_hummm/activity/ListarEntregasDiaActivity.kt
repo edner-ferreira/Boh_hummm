@@ -46,7 +46,7 @@ class ListarEntregasDiaActivity : AppCompatActivity() {
         val dateAtual = LocalDate.now()
         val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
         val dataFormatada = dateAtual.format(formatadorDate).toString()
-        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
+        val btnVoltar = findViewById<Button>(R.id.btnVolta)
 
         val lista = deliveryController.getAllDeliveriesByUserDate(userId, dataFormatada)
         var slope = slopeController.buscarValueSlopeByUserDate(userId, dataFormatada)
@@ -63,9 +63,9 @@ class ListarEntregasDiaActivity : AppCompatActivity() {
         tvTaxa.text = "Total de taxas S encosta: R$ %.2f".format(totalTaxas)
         tvTaxaComEncosta.text = "Total de taxas C encosta: R$ %.2f".format(totalTaxasEncosta)
 
-//        btnVoltar.setOnClickListener {
-//            startActivity(Intent(this, InserirDeliveryActivity::class.java))
-//            finish()
-//        }
+        btnVoltar.setOnClickListener {
+            startActivity(Intent(this, InserirDeliveryActivity::class.java))
+            finish()
+        }
     }
 }
