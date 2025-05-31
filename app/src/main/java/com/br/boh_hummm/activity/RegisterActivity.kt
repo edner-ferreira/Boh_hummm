@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.br.boh_hummm.MainActivity
 import com.br.boh_hummm.R
 import com.br.boh_hummm.controller.MotorcycleController
 import com.br.boh_hummm.controller.UserController
@@ -30,6 +31,7 @@ class RegisterActivity : AppCompatActivity() {
         val etBrand = findViewById<EditText>(R.id.etBrand)
         val etType = findViewById<EditText>(R.id.etType)
         val etCylinder = findViewById<EditText>(R.id.etCylinder)
+        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
@@ -70,6 +72,11 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Erro: Email já cadastrado", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btnVoltar.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

@@ -37,6 +37,7 @@ class ProfileActivity : AppCompatActivity() {
 
             val btnInserirEncosta = findViewById<Button>(R.id.btnInserirEncosta)
             val btnInserirEntrega = findViewById<Button>(R.id.btnInserirEntrega)
+            val btnRelatorioDiario = findViewById<Button>(R.id.btnRelatorioDiario)
             val btnRelatorioMensal = findViewById<Button>(R.id.btnRelatorioMensal)
             val btnLogout = findViewById<Button>(R.id.btnLogout)
 
@@ -58,8 +59,13 @@ class ProfileActivity : AppCompatActivity() {
                 finish()
             }
 
+            btnRelatorioDiario.setOnClickListener {
+                startActivity(Intent(this, ListarEntregasDiaActivity::class.java))
+                finish()
+            }
+
             btnRelatorioMensal.setOnClickListener {
-                val intent = Intent(this, ListarDeliveryActivity::class.java)
+                val intent = Intent(this, ListarEntregasMesActivity::class.java)
                 startActivity(intent)
                 finish()
             }

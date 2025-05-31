@@ -41,7 +41,6 @@ class InserirDeliveryActivity : AppCompatActivity() {
         val etComanda = findViewById<EditText>(R.id.etComanda)
         val etTaxa = findViewById<EditText>(R.id.etTaxa)
         val btnInserirEntrega = findViewById<Button>(R.id.btnInserirEntrega)
-        val btnViewEntregasFinal = findViewById<Button>(R.id.btnViewEntregasFinal)
         val btnVoltar = findViewById<Button>(R.id.btnVoltar)
 
         val userId = sessionManager.getUserId().toLong()
@@ -66,7 +65,7 @@ class InserirDeliveryActivity : AppCompatActivity() {
             val dataAtual = LocalDate.now()
             val horaAtual = LocalTime.now()
             val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            val formatadorTime = DateTimeFormatter.ofPattern("HH:mm:ss")
+            val formatadorTime = DateTimeFormatter.ofPattern("HH:mm")
             val dataFormatada = dataAtual.format(formatadorDate)
             val horaFormatada = horaAtual.format(formatadorTime)
 
@@ -99,11 +98,6 @@ class InserirDeliveryActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Erro: Não foi possivel inserir a entrega", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        btnViewEntregasFinal.setOnClickListener {
-            startActivity(Intent(this, ListarEntregasDiaActivity::class.java))
-            finish()
         }
 
         btnVoltar.setOnClickListener {

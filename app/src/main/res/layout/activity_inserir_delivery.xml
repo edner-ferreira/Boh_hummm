@@ -50,27 +50,11 @@
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="8dp"
         android:text="Inserir Entrega"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewEntregasFinal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTaxa"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnViewEntregasFinal"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="8dp"
-        android:text="Total de Entregas e Taxas / dia"
         app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnInserirEntrega"
+        app:layout_constraintTop_toBottomOf="@id/etTaxa"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -80,13 +64,13 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="81dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="65dp"
         android:text="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnViewEntregasFinal"
+        app:layout_constraintTop_toBottomOf="@id/btnInserirEntrega"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

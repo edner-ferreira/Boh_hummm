@@ -55,7 +55,7 @@ class SlopeDao(private val dbHelper: DatabaseHelper) {
         return slope
     }
 
-    fun getSlopeByUsertDate(id: Long, dateSlope: String): Slope? {
+    fun getSlopeByUsertDateDay(id: Long, dateSlope: String): Slope? {
         val db = dbHelper.readableDatabase
         val query = """SELECT * FROM slope WHERE slo_user_id = ? AND slo_date = ?""".trimIndent()
 
@@ -72,5 +72,29 @@ class SlopeDao(private val dbHelper: DatabaseHelper) {
                 null
             }
         }
+    }
+
+    fun getSlopeByUsertDateMonth(userId: Long, dateInicialSlope: String, dateFinalSlope: String): List<Slope> {
+        val db = dbHelper.readableDatabase
+        val query = """SELECT * FROM slope 
+            WHERE slo_user_id = ? AND slo_date BETWEEN ? AND ?
+            """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(userId.toString(), dateInicialSlope, dateFinalSlope))
+
+        val slopes = mutableListOf<Slope>()
+
+        while (cursor.moveToNext()) {
+            val slope = Slope (
+                slo_id = cursor.getLong(0),
+                slo_date = cursor.getString(1),
+                slo_time = cursor.getString(2),
+                slo_value = cursor.getDouble(3),
+                slo_user_id = cursor.getLong(4)
+            )
+            slopes.add(slope)
+        }
+        cursor.close()
+        return slopes
     }
 }

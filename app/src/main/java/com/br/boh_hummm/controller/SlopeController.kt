@@ -46,12 +46,15 @@ class SlopeController(context: Context) {
         return false
     }
 
-    fun buscarValueSlopeByUserDate(userId: Long, dateSlope: String): Slope? {
-        val slope = slopeDao.getSlopeByUsertDate(userId, dateSlope)
+    fun buscarValueSlopeByUserDateDay(userId: Long, dateSlope: String): Slope? {
+        val slope = slopeDao.getSlopeByUsertDateDay(userId, dateSlope)
         if (slope == null) {
             return null
         }
         return slope
     }
 
+    fun buscarValueSlopeByUserDateMonth(userId: Long, dateInicialSlope: String, dateFinalSlope: String): List<Slope> {
+        return slopeDao.getSlopeByUsertDateMonth(userId, dateInicialSlope, dateFinalSlope)
+    }
 }

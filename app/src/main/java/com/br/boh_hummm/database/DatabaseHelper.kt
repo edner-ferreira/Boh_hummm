@@ -8,7 +8,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "UserDatabase.db"
-        private const val DATABASE_VERSION = 9
+        private const val DATABASE_VERSION = 10
 
         private const val TABLE_USERS = "users"
         private const val TABLE_MOTORCYCLE = "motorcycle"
@@ -57,7 +57,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             CREATE TABLE $TABLE_MOTORCYCLE (
                 $COLUMN_MOT_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_MOT_BRAND TEXT,
-                $COLUMN_MOT_TYPE TEXT UNIQUE,
+                $COLUMN_MOT_TYPE TEXT NOT NULL,
                 $COLUMN_MOT_CYLINDER_CAPACITY REAL,
                 $COLUMN_MOT_USER_ID INTEGER NOT NULL,
                 FOREIGN KEY ($COLUMN_MOT_USER_ID) REFERENCES users ($COLUMN_USER_ID) ON DELETE CASCADE
@@ -78,7 +78,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val createTableDelivery = """
             CREATE TABLE $TABLE_DELIVERY (
                 $COLUMN_DEL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                $COLUMN_DEL_ORDER INTEGER UNIQUE,
+                $COLUMN_DEL_ORDER INTEGER NOT NULL,
                 $COLUMN_DEL_FEE REAL,
                 $COLUMN_DEL_DATE DATE NOT NULL,
                 $COLUMN_DEL_TIME DATE NOT NULL,

@@ -41,7 +41,7 @@ class DeliveryDao(private val dbHelper: DatabaseHelper) {
         return list
     }
 
-    fun getDeliveriesByDate(userId: Long, date: String): List<Delivery> {
+    fun getDeliveriesByDateDay(userId: Long, date: String): List<Delivery> {
         val db = dbHelper.readableDatabase
         val query = """
             SELECT d.* FROM delivery d
@@ -49,6 +49,34 @@ class DeliveryDao(private val dbHelper: DatabaseHelper) {
             WHERE d.del_user_id = ? AND s.slo_date = ?
             """
         val cursor = db.rawQuery(query, arrayOf(userId.toString(), date))
+        val deliveries = mutableListOf<Delivery>()
+
+        while (cursor.moveToNext()) {
+            val delivery = Delivery(
+                del_id = cursor.getLong(0),
+                del_order = cursor.getInt(1),
+                del_fee = cursor.getDouble(2),
+                del_date = cursor.getString(3),
+                del_time = cursor.getString(4),
+                del_slo_id = cursor.getLong(5),
+                del_user_id = cursor.getLong(6),
+                del_mot_id = cursor.getLong(7)
+            )
+            deliveries.add(delivery)
+        }
+        cursor.close()
+        return deliveries
+    }
+
+    fun getDeliveriesByDateMonth(userId: Long, dateInicial: String, dateFinal: String): List<Delivery> {
+        val db = dbHelper.readableDatabase
+        val query = """
+            SELECT d.* FROM delivery d
+            INNER JOIN slope s ON d.del_slo_id = s.slo_id
+            WHERE d.del_user_id = ? AND s.slo_date BETWEEN ? AND ?
+        """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(userId.toString(), dateInicial, dateFinal))
         val deliveries = mutableListOf<Delivery>()
 
         while (cursor.moveToNext()) {

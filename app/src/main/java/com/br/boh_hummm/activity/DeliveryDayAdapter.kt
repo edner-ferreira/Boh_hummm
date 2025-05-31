@@ -8,24 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.boh_hummm.R
 import com.br.boh_hummm.model.Delivery
 
-class DeliveryAdapter(private val deliveries: List<Delivery>) :
-    RecyclerView.Adapter<DeliveryAdapter.DeliveryViewHolder>() {
+class DeliveryDayAdapter(private val deliveries: List<Delivery>) :
+    RecyclerView.Adapter<DeliveryDayAdapter.DeliveryViewHolder>() {
 
     class DeliveryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvComanda: TextView = itemView.findViewById(R.id.tvComanda)
-        val tvTaxa: TextView = itemView.findViewById(R.id.tvTaxa)
+        val tvComandaTaxa: TextView = itemView.findViewById(R.id.tvComandaTaxa)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeliveryViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.one_delivery, parent, false)
+            .inflate(R.layout.one_day_delivery, parent, false)
         return DeliveryViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: DeliveryViewHolder, position: Int) {
         val delivery = deliveries[position]
-        holder.tvComanda.text = "Comanda: ${delivery.del_order}"
-        holder.tvTaxa.text = "R$ %.2f".format(delivery.del_fee ?: 0.0)
+        holder.tvComandaTaxa.text = "Comanda: ${delivery.del_order} - Taxa R$ %.2f".format(delivery.del_fee ?: 0.0)
     }
 
     override fun getItemCount(): Int = deliveries.size
