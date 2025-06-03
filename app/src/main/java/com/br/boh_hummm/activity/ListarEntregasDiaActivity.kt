@@ -1,6 +1,5 @@
 package com.br.boh_hummm.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -28,7 +27,6 @@ class ListarEntregasDiaActivity : AppCompatActivity() {
     private lateinit var tvTaxa: TextView
     private lateinit var tvTaxaComEncosta: TextView
 
-    @SuppressLint("MissingInflatedId")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +46,8 @@ class ListarEntregasDiaActivity : AppCompatActivity() {
         val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
         val dataFormatada = dateAtual.format(formatadorDate).toString()
         val btnVoltar = findViewById<Button>(R.id.btnVolta)
+
+        println(dataFormatada)
 
         val lista = deliveryController.getAllDeliveriesByUserDateDay(userId, dataFormatada)
         var slope = slopeController.buscarValueSlopeByUserDateDay(userId, dataFormatada)

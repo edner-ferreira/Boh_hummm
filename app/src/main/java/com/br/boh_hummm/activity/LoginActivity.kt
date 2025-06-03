@@ -34,14 +34,18 @@ class LoginActivity : AppCompatActivity() {
 
             val user = userController.login(email, password)
             if (user != null) {
-                sessionManager.saveUserSession(user.user_id)  // 🔹 Salva o ID do usuário logado
-                val intent = Intent(this, ProfileActivity::class.java)
-                intent.putExtra("USER_ID", user.user_id)
-                startActivity(intent)
-                finish()
+                if (user.user_ativo != 0) {
+                    sessionManager.saveUserSession(user.user_id)  // 🔹 Salva o ID do usuário logado
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    intent.putExtra("USER_ID", user.user_id)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Usuário inativo!!!", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Email ou senha incorretos, \n" +
-                        "ou úsuario não cadastrado", Toast.LENGTH_SHORT).show()
+                        "ou usuário não cadastrado", Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -8,7 +8,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "UserDatabase.db"
-        private const val DATABASE_VERSION = 10
+        private const val DATABASE_VERSION = 11
 
         private const val TABLE_USERS = "users"
         private const val TABLE_MOTORCYCLE = "motorcycle"
@@ -18,6 +18,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val COLUMN_USER_ID = "user_id"
         private const val COLUMN_USER_NAME = "user_name"
         private const val COLUMN_USER_EMAIL = "user_email"
+        private const val COLUMN_USER_ATIVO = "user_ativo"
         private const val COLUMN_USER_PASSWORD = "user_password"
 
         private const val COLUMN_MOT_ID = "mot_id"
@@ -49,6 +50,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_USER_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_USER_NAME TEXT,
                 $COLUMN_USER_EMAIL TEXT UNIQUE,
+                $COLUMN_USER_ATIVO INTEGER NOT NULL,
                 $COLUMN_USER_PASSWORD TEXT
             );
             """.trimIndent()

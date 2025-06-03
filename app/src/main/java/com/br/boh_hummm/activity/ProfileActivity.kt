@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -39,6 +40,8 @@ class ProfileActivity : AppCompatActivity() {
             val btnInserirEntrega = findViewById<Button>(R.id.btnInserirEntrega)
             val btnRelatorioDiario = findViewById<Button>(R.id.btnRelatorioDiario)
             val btnRelatorioMensal = findViewById<Button>(R.id.btnRelatorioMensal)
+            val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
+            val btnDeletarPerfil = findViewById<Button>(R.id.btnDeletarPerfil)
             val btnLogout = findViewById<Button>(R.id.btnLogout)
 
             val slopeDiaria = slopeController.verificarSlopeDiariaInserida(userId)
@@ -68,6 +71,23 @@ class ProfileActivity : AppCompatActivity() {
                 val intent = Intent(this, ListarEntregasMesActivity::class.java)
                 startActivity(intent)
                 finish()
+            }
+
+            btnEditarPerfil.setOnClickListener {
+                val intent = Intent(this, EditarRegisterActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            btnDeletarPerfil.setOnClickListener {
+                if (userController.deleteUser(userId)) {
+                    Toast.makeText(this, "Usuário deletado com sucesso.", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Erro ao deletar usuário.", Toast.LENGTH_LONG).show()
+                }
             }
 
             btnLogout.setOnClickListener {

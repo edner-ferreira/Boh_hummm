@@ -47,7 +47,7 @@ class DeliveryDao(private val dbHelper: DatabaseHelper) {
             SELECT d.* FROM delivery d
             INNER JOIN slope s ON d.del_slo_id = s.slo_id
             WHERE d.del_user_id = ? AND s.slo_date = ?
-            """
+            """.trimIndent()
         val cursor = db.rawQuery(query, arrayOf(userId.toString(), date))
         val deliveries = mutableListOf<Delivery>()
 

@@ -24,4 +24,12 @@ class UserController(context: Context) {
     fun getUserID(id: Long): User? {
         return userDao.getUserByID(id)
     }
+
+    fun updateUser(user: User): Boolean {
+        return userDao.updateUser(user)
+    }
+
+    fun deleteUser(id: Long): Boolean {
+        return userDao.deleteUser(id)
+    }
 }

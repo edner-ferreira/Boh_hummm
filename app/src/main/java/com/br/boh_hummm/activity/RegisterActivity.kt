@@ -51,6 +51,7 @@ class RegisterActivity : AppCompatActivity() {
             val user = User(
                 user_name = name,
                 user_email = email,
+                user_ativo = 1,
                 user_password = password
             )
             val userId = userController.registerUser(user)

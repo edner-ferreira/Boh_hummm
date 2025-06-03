@@ -79,7 +79,7 @@ class InserirDeliveryActivity : AppCompatActivity() {
                 Toast.makeText(this, "Nenhum slope encontrado para este usuário.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
+            println(slopeId)
             val delivery = Delivery(
                 del_order = comanda.toString().toInt(),
                 del_fee = taxa.toString().toDoubleOrNull(),
