@@ -43,11 +43,9 @@ class ListarEntregasDiaActivity : AppCompatActivity() {
 
         val userId = sessionManager.getUserId().toLong()
         val dateAtual = LocalDate.now()
-        val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val formatadorDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val dataFormatada = dateAtual.format(formatadorDate).toString()
         val btnVoltar = findViewById<Button>(R.id.btnVolta)
-
-        println(dataFormatada)
 
         val lista = deliveryController.getAllDeliveriesByUserDateDay(userId, dataFormatada)
         var slope = slopeController.buscarValueSlopeByUserDateDay(userId, dataFormatada)

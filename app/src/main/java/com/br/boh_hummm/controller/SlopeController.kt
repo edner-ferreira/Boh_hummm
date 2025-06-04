@@ -34,13 +34,12 @@ class SlopeController(context: Context) {
         if (slope == null) {
             return false
         }
-        val ultimaDataHoraInserida = slope.slo_date
-        val ultimaData = ultimaDataHoraInserida.split("-")
+        val ultimaDataInserida = slope.slo_date
         val dataHoje = LocalDate.now()
-        val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val formatadorDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val dataFormatada = dataHoje.format(formatadorDate).toString()
 
-        if (ultimaData[0].equals(dataFormatada)) {
+        if (ultimaDataInserida.equals(dataFormatada)) {
             return true
         }
         return false

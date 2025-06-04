@@ -47,10 +47,10 @@ class ListarEntregasMesActivity : AppCompatActivity() {
 
         val userId = sessionManager.getUserId().toLong()
         val dateAtual = LocalDate.now()
-        val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val formatadorDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val dataFormatada = dateAtual.format(formatadorDate).toString()
-        val dataMesAno = dataFormatada.split("/")
-        val dataInicial = "01/" + dataMesAno[1] + "/" + dataMesAno[2]
+        val dataMesAno = dataFormatada.split("-")
+        val dataInicial =  dataMesAno[0] + "-" + dataMesAno[1] + "-" + "01"
         val btnVoltar = findViewById<Button>(R.id.btnVolta)
 
         val lista = deliveryController.getAllDeliveriesByUserDateMonth(userId, dataInicial, dataFormatada)

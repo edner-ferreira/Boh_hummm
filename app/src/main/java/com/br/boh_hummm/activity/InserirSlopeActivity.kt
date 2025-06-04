@@ -43,7 +43,7 @@ class InserirSlopeActivity : AppCompatActivity() {
             val userId = sessionManager.getUserId().toLong()
             val dataAtual = LocalDate.now()
             val horaAtual = LocalTime.now()
-            val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val formatadorDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val formatadorTime = DateTimeFormatter.ofPattern("HH:mm")
             val dataFormatada = dataAtual.format(formatadorDate)
             val horaFormatada = horaAtual.format(formatadorTime)

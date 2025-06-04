@@ -64,7 +64,7 @@ class InserirDeliveryActivity : AppCompatActivity() {
             val taxa = etTaxa.text.toString().trim()
             val dataAtual = LocalDate.now()
             val horaAtual = LocalTime.now()
-            val formatadorDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val formatadorDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val formatadorTime = DateTimeFormatter.ofPattern("HH:mm")
             val dataFormatada = dataAtual.format(formatadorDate)
             val horaFormatada = horaAtual.format(formatadorTime)
@@ -79,7 +79,7 @@ class InserirDeliveryActivity : AppCompatActivity() {
                 Toast.makeText(this, "Nenhum slope encontrado para este usuário.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            println(slopeId)
+
             val delivery = Delivery(
                 del_order = comanda.toString().toInt(),
                 del_fee = taxa.toString().toDoubleOrNull(),
