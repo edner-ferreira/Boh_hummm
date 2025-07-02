@@ -20,8 +20,8 @@ class SlopeController(context: Context) {
         return true
     }
 
-    fun buscarUltimoSlopeInserido(userId: Long): Slope? {
-        val slope = slopeDao.getSlopeLastDate(userId)
+    fun buscarUltimoSlopeInserido(userId: Long, dateSlope: String): Slope? {
+        val slope = slopeDao.getSlopeLastDate(userId, dateSlope)
         if (slope == null) {
             return null
         }
@@ -29,8 +29,8 @@ class SlopeController(context: Context) {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun verificarSlopeDiariaInserida(userId: Long): Boolean {
-        val slope = slopeDao.getSlopeLastDate(userId)
+    fun verificarSlopeDiariaInserida(userId: Long, dateSlope: String): Boolean {
+        val slope = slopeDao.getSlopeLastDate(userId, dateSlope)
         if (slope == null) {
             return false
         }
@@ -54,6 +54,6 @@ class SlopeController(context: Context) {
     }
 
     fun buscarValueSlopeByUserDateMonth(userId: Long, dateInicialSlope: String, dateFinalSlope: String): List<Slope> {
-        return slopeDao.getSlopeByUsertDateMonth(userId, dateInicialSlope, dateFinalSlope)
+        return slopeDao.getSlopeByUsertDateMonthYear(userId, dateInicialSlope, dateFinalSlope)
     }
 }

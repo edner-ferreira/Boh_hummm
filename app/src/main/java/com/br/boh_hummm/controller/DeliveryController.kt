@@ -21,7 +21,7 @@ class DeliveryController(context: Context) {
     }
 
     fun getAllDeliveriesByUserDateMonth(userId: Long, dataInicialFormatada: String, dataFinalFormatada: String): List<Delivery> {
-        return deliveryDao.getDeliveriesByDateMonth(userId, dataInicialFormatada, dataFinalFormatada)
+        return deliveryDao.getDeliveriesByDateMonthYear(userId, dataInicialFormatada, dataFinalFormatada)
     }
 
 }

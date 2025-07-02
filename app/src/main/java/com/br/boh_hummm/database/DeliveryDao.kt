@@ -68,7 +68,7 @@ class DeliveryDao(private val dbHelper: DatabaseHelper) {
         return deliveries
     }
 
-    fun getDeliveriesByDateMonth(userId: Long, dateInicial: String, dateFinal: String): List<Delivery> {
+    fun getDeliveriesByDateMonthYear(userId: Long, dateInicial: String, dateFinal: String): List<Delivery> {
         val db = dbHelper.readableDatabase
         val query = """
             SELECT d.* FROM delivery d

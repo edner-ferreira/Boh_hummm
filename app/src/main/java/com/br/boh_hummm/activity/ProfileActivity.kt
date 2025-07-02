@@ -14,6 +14,8 @@ import com.br.boh_hummm.R
 import com.br.boh_hummm.controller.SessionManager
 import com.br.boh_hummm.controller.SlopeController
 import com.br.boh_hummm.controller.UserController
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -40,11 +42,15 @@ class ProfileActivity : AppCompatActivity() {
             val btnInserirEntrega = findViewById<Button>(R.id.btnInserirEntrega)
             val btnRelatorioDiario = findViewById<Button>(R.id.btnRelatorioDiario)
             val btnRelatorioMensal = findViewById<Button>(R.id.btnRelatorioMensal)
+            val btnRelatorioAnual = findViewById<Button>(R.id.btnRelatorioAnual)
             val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
             val btnDeletarPerfil = findViewById<Button>(R.id.btnDeletarPerfil)
             val btnLogout = findViewById<Button>(R.id.btnLogout)
+            val dateAtual = LocalDate.now()
+            val formatadorDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val dataFormatada = dateAtual.format(formatadorDate).toString()
 
-            val slopeDiaria = slopeController.verificarSlopeDiariaInserida(userId)
+            val slopeDiaria = slopeController.verificarSlopeDiariaInserida(userId, dataFormatada)
 
             if (slopeDiaria == true) {
 //                Toast.makeText(this, "Encosta já cadastrada neste dia.", Toast.LENGTH_LONG).show()
@@ -69,6 +75,12 @@ class ProfileActivity : AppCompatActivity() {
 
             btnRelatorioMensal.setOnClickListener {
                 val intent = Intent(this, ListarEntregasMesActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            btnRelatorioAnual.setOnClickListener {
+                val intent = Intent(this, ListarEntregasAnoActivity::class.java)
                 startActivity(intent)
                 finish()
             }

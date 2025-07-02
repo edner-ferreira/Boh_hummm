@@ -74,7 +74,7 @@ class InserirDeliveryActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val slope = slopeController.buscarUltimoSlopeInserido(userId)
+            val slope = slopeController.buscarUltimoSlopeInserido(userId, dataFormatada)
             val slopeId = slope?.slo_id ?: run {
                 Toast.makeText(this, "Nenhum slope encontrado para este usuário.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

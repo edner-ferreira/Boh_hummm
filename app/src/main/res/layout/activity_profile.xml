@@ -27,7 +27,7 @@
         android:layout_marginStart="186dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="187dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="60dp"
         android:text="Email:"
         app:layout_constraintBottom_toTopOf="@+id/btnInserirEncosta"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,10 +89,25 @@
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="8dp"
         android:text="Relatorio Mensal"
-        app:layout_constraintBottom_toTopOf="@+id/btnEditarPerfil"
+        app:layout_constraintBottom_toTopOf="@+id/btnRelatorioAnual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnRelatorioDiario"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnRelatorioAnual"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="8dp"
+        android:text="Relatorio Anual"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRelatorioMensal"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -107,7 +122,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnDeletarPerfil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnRelatorioMensal"
+        app:layout_constraintTop_toBottomOf="@id/btnRelatorioAnual"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -117,7 +132,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="81dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="15dp"
         android:text="Deletar Perfil"
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintEnd_toEndOf="parent"
